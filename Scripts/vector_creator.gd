@@ -4,6 +4,8 @@ signal vector_created(vector)
 
 @export var maximum_length := 200
 
+
+var stopWorking = false
 var touch_down := false
 var position_start := Vector2.ZERO
 var position_end := Vector2.ZERO
@@ -37,15 +39,16 @@ func _reset() -> void:
 
 func _input(event) -> void:
 	
-	if event.is_action_released("ui_touch"):
+	if event.is_action_released("ui_touch") && stopWorking == false:
 		touch_down = false
 		emit_signal("vector_created", vector)
 		_reset()
+		stopWorking = true
 	
 	if not touch_down:
 		return
 	
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion && stopWorking == false:
 		position_end = event.position
 		vector = -(position_end - position_start).limit_length(maximum_length)
 		
@@ -57,3 +60,8 @@ func _on_input_event(_viewport, event, _shape_idx) -> void:
 	if event.is_action_pressed("ui_touch"):
 		touch_down = true
 		position_start = event.position
+
+
+
+func stopchange_thingie():
+	stopWorking = !stopWorking

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://0rkjvveau3cy"]
 
 [ext_resource type="Script" uid="uid://btu7ufq3yuo8e" path="res://Scripts/vector_creator.gd" id="1_7513d"]
-[ext_resource type="Texture2D" uid="uid://bmy6y337hqhfg" path="res://icon.svg" id="2_u8fvm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(122, 116)
@@ -12,6 +11,14 @@ script = ExtResource("1_7513d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1173027060]
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1560373250]
-z_index = -1
-texture = ExtResource("2_u8fvm")
+[node name="Panel" type="Panel" parent="CollisionShape2D" unique_id=465855878]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -58.0
+offset_right = 61.0
+offset_bottom = 58.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

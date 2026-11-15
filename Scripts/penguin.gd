@@ -4,6 +4,8 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+var numCollision = 0
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -29,9 +31,12 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
+		numCollision += 1
+		print(numCollision)
 	
 
 
-func _on_vector_creator_vector_created(vector: Variant) -> void:
+
+func launch(force : Vector2) -> void:
 	
-	pass # Replace with function body.
+	velocity = clamp(force, Vector2(100,100), Vector2(200,200))

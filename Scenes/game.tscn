@@ -1,12 +1,14 @@
 [gd_scene format=4 uid="uid://b0u4dslfecj5e"]
 
 [ext_resource type="Script" uid="uid://bf8yv2whsc5rb" path="res://Scripts/game.gd" id="1_3dryh"]
+[ext_resource type="Texture2D" uid="uid://dwkddn60vouup" path="res://Assets/ice ice baby.png" id="2_ldgsr"]
 [ext_resource type="Texture2D" uid="uid://cynphsudtf7lj" path="res://Assets/jame-gam-palette.webp" id="2_wowpa"]
 [ext_resource type="FontFile" uid="uid://cfqw3pph45i5f" path="res://Assets/augiepixel.ttf" id="3_i6g32"]
 [ext_resource type="Texture2D" uid="uid://bmy6y337hqhfg" path="res://icon.svg" id="4_1l0tm"]
 [ext_resource type="Script" uid="uid://cpdul3twf5jes" path="res://Scripts/penguin.gd" id="4_i6g32"]
 [ext_resource type="Texture2D" uid="uid://b4js5xd83ji10" path="res://Assets/Jame Gam Yay but png.png" id="4_wowpa"]
 [ext_resource type="Texture2D" uid="uid://fpcardp7jolp" path="res://Assets/Penguin_Idle.png" id="7_1l0tm"]
+[ext_resource type="Texture2D" uid="uid://yrb42mskoq8n" path="res://Assets/charging up.png" id="8_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://0rkjvveau3cy" path="res://Scenes/vector_creator.tscn" id="8_v158k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v158k"]
@@ -64,6 +66,38 @@ default_font_size = 70
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dweyk"]
 radius = 33.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22asu"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkdbe"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_81klo"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgy6u"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cwurv"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mucmn"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8m3t6"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ese38"]
+atlas = ExtResource("8_h4fw4")
+region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v158k"]
 atlas = ExtResource("7_1l0tm")
@@ -137,6 +171,35 @@ region = Rect2(0, 256, 64, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_22asu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkdbe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_81klo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgy6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cwurv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mucmn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8m3t6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ese38")
+}],
+"loop": 1,
+"name": &"Charging",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_v158k")
 }, {
 "duration": 1.0,
@@ -198,6 +261,8 @@ script = ExtResource("1_3dryh")
 [node name="Background" type="Node2D" parent="." unique_id=804287430]
 
 [node name="BG Colour" type="Sprite2D" parent="Background" unique_id=85831762]
+scale = Vector2(3.73, 3.73)
+texture = ExtResource("2_ldgsr")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Background" unique_id=1894797901]
 scale = Vector2(0.69, 0.69)
@@ -211,7 +276,7 @@ position_smoothing_enabled = true
 [node name="Overlay" type="CanvasLayer" parent="." unique_id=1388688011]
 
 [node name="VectorCreator" parent="Overlay" unique_id=532619552 instance=ExtResource("8_v158k")]
-position = Vector2(123, 554)
+position = Vector2(147, 528)
 
 [node name="Node2D" type="Node2D" parent="Overlay" unique_id=2038845455]
 
@@ -242,6 +307,15 @@ fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Overlay" unique_id=1429566375]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Penguin" type="CharacterBody2D" parent="." unique_id=972763097]
 script = ExtResource("4_i6g32")
@@ -288,8 +362,9 @@ expand_mode = 1
 [node name="Penguie Sprite" type="AnimatedSprite2D" parent="Penguin" unique_id=850439640]
 position = Vector2(4.435, 3)
 sprite_frames = SubResource("SpriteFrames_g4v7s")
+animation = &"Charging"
 autoplay = "default"
-frame_progress = 0.18403639
+frame_progress = 0.0976935
 
 [node name="Button" type="Button" parent="Penguin" unique_id=501120026]
 visible = false
@@ -305,6 +380,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 
-[connection signal="vector_created" from="Overlay/VectorCreator" to="Penguin" method="_on_vector_creator_vector_created"]
+[connection signal="vector_created" from="Overlay/VectorCreator" to="." method="_on_vector_creator_vector_created"]
+[connection signal="vector_created" from="Overlay/VectorCreator" to="Penguin" method="launch"]
 [connection signal="button_down" from="Penguin/Button" to="." method="_on_button_button_down"]
 [connection signal="button_up" from="Penguin/Button" to="." method="_on_button_button_up"]

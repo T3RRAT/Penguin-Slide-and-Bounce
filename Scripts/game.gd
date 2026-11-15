@@ -12,6 +12,8 @@ var screen_Size = DisplayServer.screen_get_size()
 
 @onready var overlay_elements = $Overlay/Node2D/Elements
 
+@onready var vecCreator = $Overlay/VectorCreator
+@onready var colorCover = $Overlay/ColorRect
 
 @onready var penguin = $Penguin
 @onready var drag_indicator = $"Penguin/Drag Indicator"
@@ -49,6 +51,7 @@ func _process(delta: float) -> void:
 	
 	
 	
+	
 	pass
 
 
@@ -65,4 +68,12 @@ func _on_button_button_up() -> void:
 	
 	
 	print("chicken")
+	pass # Replace with function body.
+
+
+func _on_vector_creator_vector_created(vector: Variant) -> void:
+	#colorCover.mouse_filter = colorCover.MOUSE_FILTER_STOP
+	#colorCover.self_modulate = diVisible
+	#vecCreator.input_pickable
+	print("Chicken")
 	pass # Replace with function body.
