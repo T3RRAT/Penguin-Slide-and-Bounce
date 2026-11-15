@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://xn2jcx34b8hl"
+path="res://.godot/imported/jacbobblers fire mucis.wav-8c8e2ab0305215cbe17532b22c3d6145.sample"
+
+[deps]
+
+source_file="res://Assets/jacbobblers fire mucis.wav"
+dest_files=["res://.godot/imported/jacbobblers fire mucis.wav-8c8e2ab0305215cbe17532b22c3d6145.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

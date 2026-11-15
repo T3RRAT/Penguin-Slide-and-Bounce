@@ -2,7 +2,8 @@ extends Area2D
 
 signal vector_created(vector)
 
-@export var maximum_length := 200
+@export var maximum_length := 400
+
 
 
 var stopWorking = false
@@ -39,7 +40,7 @@ func _reset() -> void:
 
 func _input(event) -> void:
 	
-	if event.is_action_released("ui_touch") && stopWorking == false:
+	if event.is_action_released("ui_touch") :#&& stopWorking == false:
 		touch_down = false
 		emit_signal("vector_created", vector)
 		_reset()
@@ -48,10 +49,9 @@ func _input(event) -> void:
 	if not touch_down:
 		return
 	
-	if event is InputEventMouseMotion && stopWorking == false:
+	if event is InputEventMouseMotion: #&& stopWorking == false:
 		position_end = event.position
-		vector = -(position_end - position_start).limit_length(maximum_length)
-		
+		vector = -(2*position_end - 2*position_start).limit_length(maximum_length)
 		queue_redraw()
 
 
@@ -65,3 +65,7 @@ func _on_input_event(_viewport, event, _shape_idx) -> void:
 
 func stopchange_thingie():
 	stopWorking = !stopWorking
+
+
+func _on_mouse_entered() -> void:
+	pass # Replace with function body.

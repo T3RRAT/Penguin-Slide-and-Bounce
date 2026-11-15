@@ -1,10 +1,19 @@
 [gd_scene format=3 uid="uid://dcxxh35eqpn"]
 
+[ext_resource type="Script" uid="uid://drsnjce64daib" path="res://Scripts/snow_pile.gd" id="1_b1cbb"]
+[ext_resource type="Texture2D" uid="uid://pf4jqa86h7ud" path="res://Assets/snowpile but circle.png" id="1_wg624"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4v7s"]
 
 [node name="Snow Pile" type="Area2D" unique_id=52912571]
-
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1413862146]
+scale = Vector2(3.7164063, 3.7164063)
+script = ExtResource("1_b1cbb")
 
 [node name="CollieShape" type="CollisionShape2D" parent="." unique_id=1646731481]
 shape = SubResource("CircleShape2D_g4v7s")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2082673600]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_wg624")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

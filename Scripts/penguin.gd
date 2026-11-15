@@ -4,7 +4,22 @@ extends CharacterBody2D
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+var bouncePerBounce
 var numCollision = 0
+
+
+
+
+
+var speedMult = 1
+
+@onready var nooting = $NootNoot
+@onready var game = $".."
+@onready var sprite = $"Penguie Sprite"
+
+signal collision()
+
+
 
 
 func _physics_process(delta: float) -> void:
@@ -25,18 +40,43 @@ func _physics_process(delta: float) -> void:
 		#velocity.x = move_toward(velocity.x, 0, SPEED)
 #
 	#move_and_slide()
+	if velocity.x < 0:
+		sprite.flip_h = true
+	else:
+		sprite.flip_h = false
 	
 	
+	if round(velocity) == Vector2(0,0):
+		sprite.play("default")
+	else:
+		sprite.play("Slide")
+	
+	
+	
+	speedMult = game.penguinSpeedMult
+	
+	bouncePerBounce = game.bounceBounce
 	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		velocity = velocity.bounce(collision.get_normal())
-		numCollision += 1
-		print(numCollision)
+		game.bounces += bouncePerBounce
+		print(game.bounces)
+		
+		nooting.pitch_scale = randf() + randi_range(0,1)
+		nooting.play()
+		emit_signal("collision")
 	
 
 
 
 func launch(force : Vector2) -> void:
+	velocity = (force + Vector2(randi_range(-20,20), randi_range(-20,20))) * speedMult
+
+
+
+
+
+func speedIncrease():
 	
-	velocity = clamp(force, Vector2(100,100), Vector2(200,200))
+	pass
